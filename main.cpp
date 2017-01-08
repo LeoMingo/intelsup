@@ -28,6 +28,18 @@ void list_cpy(LIST src, LIST dest, const int& src_size)     //make src_size read
     }
 }
 
+LIST_ITEM list_elem_conc(LIST list, const int& list_size)
+{
+    LIST_ITEM conc_str = "";  //Concatenated List String
+    iLOOP(list_size)
+    {
+        conc_str += list[i];
+        conc_str += "\n";
+    }
+
+    return conc_str;
+}
+
 int main(int argc, char ** argv){
 
     IS_DATA is_data;    //intelsup data structure
@@ -59,7 +71,9 @@ int main(int argc, char ** argv){
     LIST_ITEM sent_rst = "";
     iLOOP(email_cnt)
     {
-        sent_rst = kl.word_extractor(email_cont_list[i]);
+        //^-------------------------------^
+        //Add this rst_num later
+        sent_rst = kst_elem_conc(kl.word_extractor(email_cont_list[i]), kl.rst_num);
         rst_list[email_cnt] = sent_rst;
     }
 
